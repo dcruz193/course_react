@@ -15,14 +15,35 @@ export default class TodoList extends Component{
 	}
 
 	updateTodo(todo,index){
+		let todos = this.state.todos.slice(); 
+		todos[index]=todo;
+		this.setState(() => {
+			return {
+				todos: todos
+			}
+		} );
 
 	}
 
 	removeTodo(index){
 
+		let todos = this.state.todos.slice();
+		todos.splice(index,1);
+		this.setState({todos});
+
 	}
 
 	addTodo(todo){
+		if (todo){
+			this.setState({
+				todos:[
+					...this.state.todos,
+					todo
+				]
+
+			});
+			
+		}
 
 	}
 
@@ -57,7 +78,7 @@ export default class TodoList extends Component{
 								return (
 										<TodoItem
 											onUpdateTodo={(todoUpdated) => this.updateTodo(todoUpdated,index) }
-											onRemove={() => this.removetodo(index)}
+											onRemove={() => this.removeTodo(index)}
 											index={index}
 											key={index}
 										>

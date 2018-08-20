@@ -23,6 +23,7 @@ export default class TodoItem extends Component {
 	handleChange (evt){
 		this.setState({todo:evt.target.value});
 	}
+
 	dynamicComponents(){
 		let input, actionButton; 
 		const {editMode,todo} = this.state;
@@ -49,7 +50,7 @@ export default class TodoItem extends Component {
 		}else{
 			input = todo;
 			actionButton=(
-					<button 
+					<button  
 						type="button" 
 						className="btn btn-warning text-white"
 						onClick={this.onEditMode.bind(this)}
@@ -79,7 +80,7 @@ export default class TodoItem extends Component {
 						<button 
 							type="button" 
 							className="btn btn-danger" 
-							onClick="onRemove"
+							onClick={onRemove}
 						>
 							Eliminar
 						</button>
